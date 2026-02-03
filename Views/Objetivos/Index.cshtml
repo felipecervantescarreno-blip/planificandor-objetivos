@@ -1,0 +1,42 @@
+﻿@model Objetivo
+
+@{
+    ViewData["Title"] = "Nuevo Objetivo";
+}
+
+<h2>Nuevo Objetivo</h2>
+
+@if (TempData["ok"] != null)
+{
+    <div style="color: green; margin-bottom: 10px;">
+        @TempData["ok"]
+    </div>
+}
+
+<form asp-action="Index" method="post">
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label>Nombre</label><br />
+        <input asp-for="Nombre" />
+        <span asp-validation-for="Nombre" style="color:red"></span>
+    </div>
+
+    <div>
+        <label>Descripción</label><br />
+        <input asp-for="Descripcion" />
+    </div>
+
+    <div>
+        <label>Estado</label><br />
+        <input asp-for="Estado" />
+    </div>
+
+    <br />
+
+    <button type="submit">💾 Guardar</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
